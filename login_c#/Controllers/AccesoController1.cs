@@ -101,7 +101,7 @@ public class AccesoController1 : Controller
         //USAR LA REFERENCIA DE "System.Security.Cryptography"
 
         StringBuilder Sb = new StringBuilder();
-        using (SHA256 hash = SHA256Managed.Create())
+        using (SHA256 hash = SHA256.Create())
         {
             Encoding enc = Encoding.UTF8;
             byte[] result = hash.ComputeHash(enc.GetBytes(texto));
