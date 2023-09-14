@@ -50,3 +50,13 @@ begin
 	else
 		select '0'
 end
+
+declare @Registrado bit, @Mensaje varchar(100)
+
+exec  SP_Registrar 'jos90@gmail.com','c53fc0b508921ab35e8045dfb5d4bb5f487c6c0f4ba89442113c5f1016bbf3db','josue','cotera',@Registrado,@Mensaje output
+
+select @Registrado
+select @Mensaje
+
+select * from USUARIO
+exec sp_validacion 'jos90@gmail.com','c53fc0b508921ab35e8045dfb5d4bb5f487c6c0f4ba89442113c5f1016bbf3db','josue','cotera'
