@@ -4,9 +4,15 @@ namespace login_c_.Controllers
 {
     public class AccesoController1 : Controller
     {
-        public IActionResult Index()
+        public IActionResult Login()
         {
             return View();
         }
+
+        public IActionResult Registrar()
+        {
+            return View();
+        }
+
     }
 }
