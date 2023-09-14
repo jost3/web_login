@@ -52,10 +52,17 @@ public class AccesoController1 : Controller
             registrado = Convert.ToBoolean(cmd.Parameters["Registrado"].Value);
             mensaje = cmd.Parameters["Mensaje"].Value.ToString();
         }
-        
-
-
+        ViewData["Mensaje"] = mensaje;
+        if (registrado)
+        {
+            return RedirectToAction("Login", "Acceso");
+        }
+        else
+        {
             return View();
+        }
+
+
     }
     public static string ConvertirSha256(string texto)
     {
