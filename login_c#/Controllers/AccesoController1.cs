@@ -61,7 +61,38 @@ public class AccesoController1 : Controller
         {
             return View();
         }
+    
+    }
+    [HttpPost]
+    public IActionResult Login(usuario Ousuario)
+    {
 
+        Ousuario.Clave = ConvertirSha256(Ousuario.Clave);
+
+        using (SqlConnection cn = new SqlConnection(cadena))
+        {
+            SqlCommand cmd = new SqlCommand("sp_validacion", cn);
+            cmd.Parameters.AddWithValue("Correo", Ousuario.Correo);
+            cmd.Parameters.AddWithValue("Clave", Ousuario.Clave);
+            cmd.Parameters.AddWithValue("Nombre", Ousuario.Nombre);
+            cmd.Parameters.AddWithValue("apellido", Ousuario.apellido);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cn.Open();
+
+
+             Ousuario.IdUser = Convert.ToInt32(cmd.ExecuteScalar().ToString());
+        }
+
+        if (Ousuario.IdUser != 0)
+        {
+            HttpContext.Session.SetString("usuario", Ousuario.Nombre);
+            return RedirectToAction("Index", "Home");
+        }
+        else
+        {
+            ViewData["Mensaje"] = "USUARIO NO ECONTRADO";
+            return View();
+        }
 
     }
     public static string ConvertirSha256(string texto)

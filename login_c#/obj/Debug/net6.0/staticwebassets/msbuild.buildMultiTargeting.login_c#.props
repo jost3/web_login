@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\login_c#.props" />
+</Project>
