@@ -36,3 +36,17 @@ begin
 		set	@Mensaje = 'Correo ya existente'
 	end
 end
+
+CREATE PROC sp_validacion(
+@Correo varchar(80),
+@Clave varchar(80),
+@Nombre varchar(80),
+@apellido varchar(80)
+)
+as
+begin
+	if(exists(select * from USUARIO where Correo = @Correo and Clave = @Clave and Nombre = @Nombre and apellido =  @apellido))
+		select IdUser from USUARIO where Correo=  @Correo and Clave = @Clave and Nombre = @Nombre and apellido =  @apellido
+	else
+		select '0'
+end
