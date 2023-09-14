@@ -3,6 +3,7 @@ using login_c_.Models;
 using System.Text;
 using System.Security.Cryptography;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace login_c_.Controllers;
 
@@ -36,10 +37,22 @@ public class AccesoController1 : Controller
             return View();
         }
 
-        using (SqlConnection cn = new SqlConnection(cadena)) 
+        using (SqlConnection cn = new SqlConnection(cadena))
         {
-         
+            SqlCommand cmd = new SqlCommand("SP_Registrar", cn);
+            cmd.Parameters.AddWithValue("Correo", Ousuario.Correo);
+            cmd.Parameters.AddWithValue("Clave", Ousuario.Clave);
+            cmd.Parameters.AddWithValue("Nombre", Ousuario.Nombre);
+            cmd.Parameters.AddWithValue("apellido", Ousuario.apellido);
+            cmd.Parameters.Add("Registrado", SqlDbType.Bit).Direction = ParameterDirection.Output;
+            cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 100).Direction = ParameterDirection.Output;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cn.Open();
+            cmd.ExecuteNonQuery();
+            registrado = Convert.ToBoolean(cmd.Parameters["Registrado"].Value);
+            mensaje = cmd.Parameters["Mensaje"].Value.ToString();
         }
+        
 
 
             return View();
