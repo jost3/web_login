@@ -3,11 +3,10 @@
     public class usuario
     {
         public int IdUser { get; set; }
-        public int Correo { get; set; }
-        public int Clave { get; set; }
-        public int Nombre { get; set; }
-        public int apellido { get; set; }
-
+        public string Correo { get; set; }
+        public string Clave { get; set; }
+        public string Nombre { get; set; }
+        public string apellido { get; set; }
 
         public string ConfirmarClave { get; set; }
 
