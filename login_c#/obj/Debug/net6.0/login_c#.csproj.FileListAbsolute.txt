@@ -229,3 +229,6 @@ C:\Users\Alumno\Desktop\logc#\login_c#\obj\Debug\net6.0\refint\login_c#.dll
 C:\Users\Alumno\Desktop\logc#\login_c#\obj\Debug\net6.0\login_c#.pdb
 C:\Users\Alumno\Desktop\logc#\login_c#\obj\Debug\net6.0\login_c#.genruntimeconfig.cache
 C:\Users\Alumno\Desktop\logc#\login_c#\obj\Debug\net6.0\ref\login_c#.dll
+C:\Users\Josue\Desktop\logc#\web_login\login_c#\obj\Debug\net6.0\login_c#.dll
+C:\Users\Josue\Desktop\logc#\web_login\login_c#\obj\Debug\net6.0\refint\login_c#.dll
+C:\Users\Josue\Desktop\logc#\web_login\login_c#\obj\Debug\net6.0\login_c#.pdb
